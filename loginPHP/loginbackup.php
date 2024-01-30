@@ -23,7 +23,7 @@
 		// babalikan kapag mali yung input
 		//index.php dapat to hehe
 	}
-
+	
 	$_SESSION['varerror'] = " ";
 	
 	if(isset($_POST['loginbutton']))
@@ -97,8 +97,8 @@
 			//index.php dapat to hehe
 		}
 	}
-
-  if(isset($_GET['invalid']))
+	
+	if(isset($_GET['invalid']))
 	{
 		if($_GET['invalid']==1)
 		 {
@@ -145,9 +145,9 @@
 		 }
 	}
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html>
 <head>
 <title>ComShop</title>
 <link rel="shortcut icon" href="images/icons/shoplogo.png"/>
@@ -180,7 +180,7 @@
 </script>
 <!-- start-smoth-scrolling -->
 </head>
-
+	
 <body>
 <!-- login -->
 		<div class="w3_login">
@@ -243,5 +243,4 @@
 	<script src="js/modal.js"></script>
 <!-- //here ends scrolling icon -->
 </body>
-
 </html>
