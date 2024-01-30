@@ -58,14 +58,16 @@ body{
 .btnAdm{
     text-align: center;
     font-weight: 5000;
-    background-color: #FFFFFF; 
+    background-color: #940A0A;
     border-radius: 10px;
     text-decoration: none;
-    color: #940A0A;
-    transition-duration: 0.3s;
-    border-color: #940A0A !important;
+    color: #FFFFFF;
+    border: 1px solid #940A0A;
+    cursor: pointer;
+    transition-duration: 0.3s; 
 }
 .btnAdm:hover{
-    background-color: #940A0A;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #940A0A;
+    border: 1px solid #940A0A !important;
 }
