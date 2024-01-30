@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	include 'db.php';
+	include 'connect.php';
 	
 	if(empty($_SESSION['username']))
 	{
@@ -19,7 +19,9 @@
 	}
 	else
 	{
-		header('Location: index.php');
+		header('Location: index.php'); 
+		// babalikan kapag mali yung input
+		//index.php dapat to hehe
 	}
 	
 	$_SESSION['varerror'] = " ";
@@ -40,6 +42,7 @@
 			$_SESSION['username'] = $logEmail;
 			$_SESSION['logged'] = "logged";
 			header('Location: index.php');
+			//index dapat to hehe
 		}
 		else
 		{
@@ -56,7 +59,7 @@
 		$sPass = $_POST['Password'];
 		$sConfPass = $_POST['CPassword'];
 		$sPhone = $_POST['Phone'];
-		$sCom = $_POST['Company'];
+		$sYear = $_POST['Year'];
 
 		// Check if the username contains symbols
 		// if (preg_match('/[^A-Za-z0-9]/', $sUname)) {
@@ -82,7 +85,7 @@
 		}
 		else
 		{
-			$saveSql = "INSERT INTO `users`(`username`,`fname`,`lname`,`company`,`email`,`password`,`date`,`phone`) VALUES('$sUname','$sFname','$sLname','$sCom','$sEmail','$sPass','$sDate','$sPhone')";
+			$saveSql = "INSERT INTO `users`(`username`,`fname`,`lname`,`year`,`email`,`password`,`date`,`phone`) VALUES('$sUname','$sFname','$sLname','$sYear','$sEmail','$sPass','$sDate','$sPhone')";
 			$saveQuery = mysqli_query($conn,$saveSql);
 			
 			// $rewardssql = "INSERT INTO `rewards`(`username`,`rewards`,`date`) VALUES('$sUname','0','$sDate')";
@@ -91,6 +94,7 @@
 			$_SESSION['username'] = $sUname;
 			$_SESSION['logged'] = "logged";
 			header('Location: index.php?created=1?');
+			//index.php dapat to hehe
 		}
 	}
 	
@@ -150,8 +154,6 @@
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Grocery Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -180,25 +182,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 	
 <body>
-<!-- header -->
-	<?php include 'topnav.php';?>
-<!-- //header -->
-<!-- products-breadcrumb -->
-	<div class="products-breadcrumb">
-		<div class="container">
-			<ul>
-				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-				<li>Sign In & Sign Up</li>
-			</ul>
-		</div>
-	</div>
-<!-- //products-breadcrumb -->
-<!-- banner -->
-	<div class="banner">
-		
-		<?php include 'sidenav.php';?>
-		
-		<div class="w3l_banner_nav_right">
 <!-- login -->
 		<div class="w3_login">
 			<h3>Sign In & Sign Up</h3>
@@ -225,7 +208,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  <input type="password" name="CPassword" placeholder="Confirm Password" required=" ">
 					  <input type="email" name="Email" placeholder="Email Address" required=" ">
 					  <input type="text" name="Phone" placeholder="Phone Number" pattern="[0-9]{11}" title="11 digit phone number" required=" ">
-					  <input type="text" name="Company" placeholder="Company/Business" required>
+					  <input type="text" name="Year" placeholder="Year-level" required>
 					  <input type="submit" name="signupbutton" value="Register">
 					</form>
 				  </div>
@@ -252,63 +235,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="clearfix"></div>
 	</div>
-<!-- newsletter-top-serv-btm -->
-	<div class="newsletter-top-serv-btm">
-		<div class="container">
-			<div class="col-md-4 wthree_news_top_serv_btm_grid">
-				<div class="wthree_news_top_serv_btm_grid_icon">
-					<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-				</div>
-				<h3>Nam libero tempore</h3>
-				<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus 
-					saepe eveniet ut et voluptates repudiandae sint et.</p>
-			</div>
-			<div class="col-md-4 wthree_news_top_serv_btm_grid">
-				<div class="wthree_news_top_serv_btm_grid_icon">
-					<i class="fa fa-bar-chart" aria-hidden="true"></i>
-				</div>
-				<h3>officiis debitis aut rerum</h3>
-				<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus 
-					saepe eveniet ut et voluptates repudiandae sint et.</p>
-			</div>
-			<div class="col-md-4 wthree_news_top_serv_btm_grid">
-				<div class="wthree_news_top_serv_btm_grid_icon">
-					<i class="fa fa-truck" aria-hidden="true"></i>
-				</div>
-				<h3>eveniet ut et voluptates</h3>
-				<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus 
-					saepe eveniet ut et voluptates repudiandae sint et.</p>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-<!-- //newsletter-top-serv-btm -->
-<!-- footer -->
-	<?php include 'footer.php';?>
-<!-- //footer -->
+
+
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-<script>
-$(document).ready(function(){
-    $(".dropdown").hover(            
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-            $(this).toggleClass('open');        
-        },
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-            $(this).toggleClass('open');       
-        }
-    );
-});
-</script>
-<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-		$(document).ready(function() {				
-			$().UItoTop({ easingType: 'easeOutQuart' });
-								
-			});
-	</script>
+
 	<script src="js/modal.js"></script>
 <!-- //here ends scrolling icon -->
 </body>
